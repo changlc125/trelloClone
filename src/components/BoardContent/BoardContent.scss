@@ -1,0 +1,21 @@
+@import '../../settings';
+.board-columns {
+  display: flex;
+  margin: 0 $gap $gap;
+  gap: 10px;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+  }
+
+  &::-webkit-scrollbar:horizontal {
+    height: 11px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.24);
+    border-radius: 5px solid $list-bg-color;
+    background-clip: padding-box;
+  }
+}
