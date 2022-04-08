@@ -12,6 +12,7 @@ export default function BoardContent() {
 
   useEffect(() => {
     const boardInitData = initData.boards.find((item) => item.id === 'board-1');
+    console.log(boardInitData);
     if (boardInitData) {
       setBoard(boardInitData);
       //   sort columns
