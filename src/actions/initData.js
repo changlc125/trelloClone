@@ -2,7 +2,7 @@ export const initData = {
   boards: [
     {
       id: 'board-1',
-      columnOrder: ['column-1', 'column-2', 'column-3'],
+      columnOrder: ['column-2', 'column-3', 'column-1'],
       columns: [
         {
           id: 'column-1',
@@ -14,8 +14,8 @@ export const initData = {
             'card-3',
             'card-4',
             'card-5',
-            'card-6',
             'card-7',
+            'card-6',
           ],
           cards: [
             {
@@ -65,6 +65,27 @@ export const initData = {
             },
             {
               id: 'card-7',
+              boardId: 'board-1',
+              columnId: 'column-1',
+              title: 'Title of card 7',
+              image: null,
+            },
+            {
+              id: 'card-8',
+              boardId: 'board-1',
+              columnId: 'column-1',
+              title: 'Title of card 7',
+              image: null,
+            },
+            {
+              id: 'card-9',
+              boardId: 'board-1',
+              columnId: 'column-1',
+              title: 'Title of card 7',
+              image: null,
+            },
+            {
+              id: 'card-10',
               boardId: 'board-1',
               columnId: 'column-1',
               title: 'Title of card 7',
