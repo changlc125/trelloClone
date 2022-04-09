@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import _ from 'lodash';
 import { mapOrder } from '../../utilites/sorts';
 import { Container, Draggable } from 'react-smooth-dnd';
-
+import { applyDrag } from '../../utilites/dragDrop';
 export default function BoardContent() {
   const [board, setBoard] = useState({});
   const [columns, setColumns] = useState([]);
@@ -23,8 +23,32 @@ export default function BoardContent() {
     }
   }, []);
 
+  //保证拖动完能固定在拖完的位置
   const onColumnDrop = (dropResult) => {
-    console.log(dropResult);
+    // console.log('inside are dropResult', dropResult);
+    let newColumns = [...columns];
+    newColumns = applyDrag(newColumns, dropResult);
+    // console.log('inside are newColumns', newColumns);
+
+    let newBoard = { ...board };
+    newBoard.columnOrder = newColumns.map((column) => column.id);
+    newBoard.columns = newColumns;
+    setColumns(newColumns);
+    setBoard(newBoard);
+  };
+
+  const onCardDrop = (dropResult, columnId) => {
+    if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
+      console.log('inside is column', dropResult, 'wirh columnId = ', columnId);
+
+      let newColumns = [...columns];
+      let currentColumn = newColumns.find((column) => column.id === columnId);
+
+      currentColumn.cards = applyDrag(currentColumn.cards, dropResult);
+      currentColumn.cardOrder = currentColumn.cards.map((card) => card.id);
+      // console.log('inside is currentColumn', currentColumn);
+      setColumns(newColumns);
+    }
   };
 
   if (_.isEmpty(board)) {
@@ -54,10 +78,14 @@ export default function BoardContent() {
             columns.map((column, index) => {
               return (
                 <Draggable key={column.id}>
-                  <Column column={column} />
+                  <Column column={column} onCardDrop={onCardDrop} />
                 </Draggable>
               );
             })}
+
+          <div className="add-new-column">
+            <i className="fa fa-plus icon"></i>Add another column
+          </div>
         </Container>
       </div>
     </>
