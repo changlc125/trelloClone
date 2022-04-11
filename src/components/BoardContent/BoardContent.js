@@ -75,7 +75,7 @@ export default function BoardContent() {
     }
 
     // uodate board columns
-    // console.log('show input:', valueInput);
+    console.log('show input:', valueInput);
     const _columns = _.cloneDeep(columns);
     _columns.push({
       id: uuidv4(),
