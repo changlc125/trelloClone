@@ -27,7 +27,7 @@
 
   .add-new-column {
     width: 250px;
-    height: 32px;
+    // height: 32px;
     line-height: 32px;
     padding: 4px 0 4px 15px;
     cursor: pointer;
@@ -38,6 +38,25 @@
     border-radius: $card-border-radius;
     &:hover {
       background-color: hsla(0, 0, 100, 0.34);
+    }
+  }
+
+  .content-add-column {
+    width: 250px;
+    padding: 5px;
+    margin-left: $gap;
+    background-color: hsla(0, 0, 100, 0.34);
+  }
+
+  .group-btn {
+    padding-top: 10px;
+    display: flex;
+    padding-top: 10px;
+    align-items: center;
+    li {
+      font-size: 30px;
+      padding-left: 10px;
+      cursor: pointer;
     }
   }
 }
