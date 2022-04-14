@@ -75,7 +75,7 @@ export default function BoardContent() {
     }
 
     // uodate board columns
-    console.log('show input:', valueInput);
+    // console.log('show input:', valueInput);
     const _columns = _.cloneDeep(columns);
     _columns.push({
       id: uuidv4(),
@@ -87,6 +87,21 @@ export default function BoardContent() {
     setColumns(_columns);
     setValueInput('');
     inputRef.current.focus();
+  };
+
+  const onUpdateColumn = (newColumn) => {
+    // console.log(newColumn);
+    const columnIdUpdate = newColumn.id;
+    let ncols = [...columns]; //original columns
+    let index = ncols.findIndex((item) => item.id === columnIdUpdate);
+    if (newColumn._destroy) {
+      //remove column
+      ncols.splice(index, 1);
+    } else {
+      //update title
+      ncols[index] = newColumn;
+    }
+    setColumns(ncols);
   };
 
   return (
@@ -108,7 +123,11 @@ export default function BoardContent() {
             columns.map((column, index) => {
               return (
                 <Draggable key={column.id}>
-                  <Column column={column} onCardDrop={onCardDrop} />
+                  <Column
+                    column={column}
+                    onCardDrop={onCardDrop}
+                    onUpdateColumn={onUpdateColumn}
+                  />
                 </Draggable>
               );
             })}
