@@ -131,39 +131,39 @@ export default function BoardContent() {
                 </Draggable>
               );
             })}
-
-          {isShowAddList === false ? (
-            <div
-              className="add-new-column"
-              onClick={() => setIsShowAddList(true)}
-            >
-              <i className="fa fa-plus icon"></i>Add another column
-            </div>
-          ) : (
-            <div className="content-add-column">
-              <input
-                type="text"
-                className="form-control"
-                ref={inputRef}
-                value={valueInput}
-                onChange={(event) => setValueInput(event.target.value)}
-              />
-
-              <div className="group-btn">
-                <button
-                  className="btn btn-success"
-                  onClick={() => handleAddList()}
-                >
-                  Add list
-                </button>
-                <i
-                  className="fa fa-times icon"
-                  onClick={() => setIsShowAddList(false)}
-                ></i>
-              </div>
-            </div>
-          )}
         </Container>
+
+        {isShowAddList === false ? (
+          <div
+            className="add-new-column"
+            onClick={() => setIsShowAddList(true)}
+          >
+            <i className="fa fa-plus icon"></i>Add another column
+          </div>
+        ) : (
+          <div className="content-add-column">
+            <input
+              type="text"
+              className="form-control"
+              ref={inputRef}
+              value={valueInput}
+              onChange={(event) => setValueInput(event.target.value)}
+            />
+
+            <div className="group-btn">
+              <button
+                className="btn btn-success"
+                onClick={() => handleAddList()}
+              >
+                Add list
+              </button>
+              <i
+                className="fa fa-times icon"
+                onClick={() => setIsShowAddList(false)}
+              ></i>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
