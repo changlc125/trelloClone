@@ -5,3 +5,7 @@
 ![image](img/5.png)  
 ![image](img/6.png)
 ![image](img/7.png)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 11dbad4642b0ccb7b8669de3b5a87186e638d901
