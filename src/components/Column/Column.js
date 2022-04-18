@@ -29,15 +29,15 @@ const Column = (props) => {
       textAreaRef.current.focus();
   }, [isShowAddNewCard]);
 
-  const toggleModal = () => {
-    setShowModalDelete(!isShowModalDelete);
-  };
-
   useEffect(() => {
     if (column && column.title) {
       setTitleColumn(column.title);
     }
   }, [column.title]);
+
+  const toggleModal = () => {
+    setShowModalDelete(!isShowModalDelete);
+  };
 
   const onModalAction = (type) => {
     if (type === MODAL_ACTION_CLOSE) {
@@ -171,6 +171,7 @@ const Column = (props) => {
                 );
               })}
           </Container>
+
           {isShowAddNewCard === true && (
             <div className="add-new-card">
               <textarea
